@@ -1,0 +1,7 @@
+{
+  "name": "Arch Linux Development",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode"
+}
