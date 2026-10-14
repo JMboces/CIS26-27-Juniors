@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Draggable Magnifying Glass</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    padding: 40px;
+    color: #222;
+    background: #f5f5f5;
+  }
+
+  #page {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+  }
+
+  #lens {
+    position: fixed;
+    left: 100px;
+    top: 100px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,.9);
+    box-shadow: 0 5px 25px #0004,
+                inset 0 0 15px #fff9;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(1px);
+    cursor: grab;
+    z-index: 1000;
+    touch-action: none;
+  }
+
+  #lens:active {
+    cursor: grabbing;
+  }
+
+  #zoom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    transform-origin: top left;
+    pointer-events: none;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  /* Glass reflection */
+  #lens::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      #ffffff70,
+      transparent 40%,
+      #ffffff15 70%,
+      #ffffff40
+    );
+    pointer-events: none;
+  }
+</style>
+</head>
+
+<body>
+  <div id="page">
+    <h1>A Magnified World</h1>
+    <p>
+      Move the magnifying glass around this page.
+      The lens enlarges the text underneath it,
+      making small details easier to read.
+    </p>
+    <h2>Look Closer</h2>
+    <p>
+      The quick brown fox jumps over the lazy dog.
+      Every little detail becomes clearer when you
+      take a closer look. This is a simple example
+      of a draggable magnifying lens.
+    </p>
+    <p>
+      You can replace this text with your own content.
+      Try dragging the glass over different paragraphs
+      and headings to see the effect.
+    </p>
+  </div>
+
+  <div id="lens">
+    <div id="zoom"></div>
+  </div>
+
+  <script>
+    const lens = document.querySelector("#lens");
+    const zoom = document.querySelector("#zoom");
+    const page = document.querySelector("#page");
+
+    // ===== SETTINGS =====
+    const scale = 2;  // Magnification strength
+    const adjustX = 50;  // Positive = right, negative = left
+    const adjustY = 40;  // Positive = down, negative = up
+    // ====================
+
+    zoom.innerHTML = page.innerHTML;
+    zoom.style.transform = `scale(${scale})`;
+    zoom.style.transformOrigin = "top left";
+    zoom.style.color = "white";
+    zoom.style.background = "transparent";
+
+    // Make cloned content transparent so the black lens shows through.
+    zoom.querySelectorAll("*").forEach(el => {
+      el.style.backgroundColor = "#lens {
+  position: fixed;
+  left: 100px;
+  top: 100px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #555;
+  background: #000;
+  box-shadow: 0 5px 25px #0008;
+  cursor: grab;
+  z-index: 99999;
+  touch-action: none;
+  isolation: isolate;
+}
+
+#zoom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  pointer-events: none;
+  color: white;
+  background: #000;
+  z-index: 1;
+}
+
+#zoom * {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: white !important;
+}";
+      el.style.backgroundImage = "none";
+    });
+
+    function updateZoom() {
+      const pageRect = page.getBoundingClientRect();
+      const lensRect = lens.getBoundingClientRect();
+
+      zoom.style.width = pageRect.width + "px";
+
+      // Find the page position underneath the lens center.
+      const lensCenterX = lensRect.left + lensRect.width / 2;
+      const lensCenterY = lensRect.top + lensRect.height / 2;
+
+      // Align the enlarged copy with the lens center.
+      const x = lensRect.width / 2
+        - (lensCenterX - pageRect.left) * scale
+        + adjustX;
+
+      const y = lensRect.height / 2
+        - (lensCenterY - pageRect.top) * scale
+        + adjustY;
+
+      zoom.style.left = `${x}px`;
+      zoom.style.top = `${y}px`;
+    }
+
+    // Drag the lens.
+    let dragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+
+    lens.addEventListener("pointerdown", e => {
+      dragging = true;
+
+      const rect = lens.getBoundingClientRect();
+      dragStartX = e.clientX - rect.left;
+      dragStartY = e.clientY - rect.top;
+
+      lens.setPointerCapture(e.pointerId);
+    });
+
+    lens.addEventListener("pointermove", e => {
+      if (!dragging) return;
+
+      lens.style.left = `${e.clientX - dragStartX}px`;
+      lens.style.top = `${e.clientY - dragStartY}px`;
+
+      updateZoom();
+    });
+
+    function stopDragging() {
+      dragging = false;
+    }
+
+    lens.addEventListener("pointerup", stopDragging);
+    lens.addEventListener("pointercancel", stopDragging);
+
+    window.addEventListener("resize", updateZoom);
+    window.addEventListener("scroll", updateZoom);
+
+    updateZoom();
+  </script>
+
+</body>
+</html>
