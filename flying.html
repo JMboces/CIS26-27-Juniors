@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Physics Website</title>
+</head>
+<body>
+
+  <main id="my-page">
+    <h1>Everything has weight.</h1>
+    <p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p>
+    <p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p><p>Scroll up or down quickly to break the text apart.</p>
+    <p>Slow scrolling does nothing. Fast scrolling creates chaos.</p>
+    <h2>Another heading</h2>
+    <p>Every word can fly, rotate, collide, and bounce.</p>
+  </main>
+
+  <button id="restore">Restore text</button>
+
+  <script src="./text-physics.js"></script>
+  <script>
+    const physics = TextPhysics.apply("#my-page", {
+      sensitivity: 2.0,
+      minDistance: 160,
+      sampleWindow: 140,
+      directions: ["up", "down"],
+      gravity: 1.2,
+      restitution: 0.62
+    });
+
+    document.querySelector("#restore").addEventListener("click", () => {
+      physics.reset();
+    });
+  </script>
+
+</body>
+</html>

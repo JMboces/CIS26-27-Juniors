@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jaydan</title>
+
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    table {
+      max-width: 100%;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    fieldset {
+      border: 1px solid white;
+    }
+
+    summary {
+      cursor: pointer;
+    }
+
+    #resetPhysics {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10000;
+      padding: 10px 15px;
+      background: white;
+      color: black;
+      border: 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <table width="600" align="center">
+    <tr>
+      <td>
+        <center>
+          <h1>Jaydan Mossow</h1>
+
+          <p>
+            Junior at Massena High School and hopefully future Systems Administrator.
+          </p>
+
+          <details open>
+            <summary>
+              <h2><strong><fieldset>About Me</fieldset></strong></h2>
+            </summary>
+
+            <p>
+              I Grew up and have always lived in Massena, NY
+              <br><br>
+              One memory i still think about is when i got access to a computer
+              for the first time. It was a all in one running windows 10.
+              It was absolutely horrible but it could play some games like garrys mod.
+            </p>
+
+            <p>
+              I am a junior in highschool (11th grade). I chose the CIS program
+              because i have had a interest and experience in computers since my
+              first pc
+              <br>
+              my favorite class in school has to be science specifically biology.
+              Chemistry is also another favorite but the teacher is horrible.
+              <br>
+              I dont have a job or play sports and im not in a club but i was
+              thinking about joining robotics
+            </p>
+
+            <p>
+              I plan to after highschool get a job i am aiming for a aprenticeship
+              at ibm.
+              <br>
+              Any job with a focus on computers server or anything similar is what
+              i want
+              <br>
+              i plan to have a hour and a good salary within 10 years i should be
+              making around 100k or more a year
+            </p>
+
+          </details>
+        </center>
+      </td>
+    </tr>
+  </table>
+   <table width="600" align="center">
+    <tr>
+      <td>
+        <center>
+          <h1>Jaydan Mossow</h1>
+
+          <p>
+            Junior at Massena High School and hopefully future Systems Administrator.
+          </p>
+
+          <details open>
+            <summary>
+              <h2><strong><fieldset>My Favorite Movies</fieldset></strong></h2>
+            </summary>
+              <lu>
+                <li><em>The mask</em></li>
+                <li><em>interstellar</em></li>
+                <li><em>Project hail mary</em></li>
+                <li><em>Iron Man</em></li>
+                <li><em>martian</em></li>
+              </lu>
+          
+
+
+          </details>
+        </center>
+      </td>
+    </tr>
+  </table>
+
+  <button id="resetPhysics" type="button">Reset Text</button>
+
+  <!-- Load your physics library from the same directory -->
+  <script src="./text-physics.js"></script>
+
+  <script>
+    const physics = TextPhysics.apply(document.body, {
+      sensitivity: 2.0,
+      minDistance: 160,
+      sampleWindow: 140,
+      directions: ["up", "down"],
+      gravity: 1.2,
+      restitution: 0.62
+    });
+
+    document.getElementById("resetPhysics").addEventListener("click", () => {
+      physics.reset();
+    });
+  </script>
+</body>
+</html>

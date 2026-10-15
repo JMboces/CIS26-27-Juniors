@@ -117,42 +117,11 @@
     zoom.style.color = "white";
     zoom.style.background = "transparent";
 
-    // Make cloned content transparent so the black lens shows through.
+    // Make cloned content transparent so the page colors show through.
     zoom.querySelectorAll("*").forEach(el => {
-      el.style.backgroundColor = "#lens {
-  position: fixed;
-  left: 100px;
-  top: 100px;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #555;
-  background: #000;
-  box-shadow: 0 5px 25px #0008;
-  cursor: grab;
-  z-index: 99999;
-  touch-action: none;
-  isolation: isolate;
-}
-
-#zoom {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: top left;
-  pointer-events: none;
-  color: white;
-  background: #000;
-  z-index: 1;
-}
-
-#zoom * {
-  background-color: transparent !important;
-  background-image: none !important;
-  color: white !important;
-}";
+      el.style.backgroundColor = "transparent";
       el.style.backgroundImage = "none";
+      el.style.color = "inherit";
     });
 
     function updateZoom() {
@@ -217,3 +186,22 @@
 
 </body>
 </html>
+
+
+<button id="restore">Restore text</button>
+
+  <script src="./text-physics.js"></script>
+  <script>
+    const physics = TextPhysics.apply("#my-page", {
+      sensitivity: 2.0,
+      minDistance: 160,
+      sampleWindow: 140,
+      directions: ["up", "down"],
+      gravity: 1.2,
+      restitution: 0.62
+    });
+
+    document.querySelector("#restore").addEventListener("click", () => {
+      physics.reset();
+    });
+  </script>
