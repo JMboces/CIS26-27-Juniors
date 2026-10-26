@@ -13,6 +13,95 @@
         <h2>Cell</h2>
         <p><strong>&lt;cell&gt;</strong> - it is a location in the table at a specific row and column. cells are created at the intersection of a row and column.</p>
 
+        <h2>table row</h2>
+        <p><strong>&lt;tr&gt;</strong> - this is the element that creates a row in the table. table rows are nested inside of table elements.</p>
 
+        <h2> table header</h2>
+        <p><strong>&lt;th&gt;</strong> - the element that creates a cell containing the table header information about the data contained in a specific column. table header cells are nested inside of table rows.</p>
+
+        <h2> data cell /table </h2>
+        <p><strong>&lt;td&gt;</strong> - the element that creates a cell containing the main data for the table. data cells are nested inside of table rows.</p
+        
+        <h2> caption</h2>
+        <p><strong>&lt;caption&gt;</strong> - the element that creates a caption for the table. captions are nested inside of table elements.</p>
+        
+
+        <table border="1">
+            <tr>
+                <th>column header 1</th>
+                <th>column header 2</th>
+            </tr>
+            <tr>
+                <th>row header 1</th>
+                <td>data 1</td>
+            </tr>
+            <tr>
+                <th>row header 2</th>
+                <td>data 2</td>
+            </tr>
+        </table>
+
+        <p><strong>more notes on tables:</strong> although you could get away without using closing in tabl element the outout will be very unpredictable</p>
+        <h2>accessibile tables</h2>
+        <p> accessiblity refers to the ability of your website to be consumed by people with disabilities</p>
+
+
+        <h2>scope</h2>
+        <p> the scope attribute is used to define the relationship between header cells and data cells in a table</p>
+
+        <table border="1">
+              <tr>
+                <th>
+                <th scope ="col">lighttest</th>
+                <th scope ="col">heaviest</th>
+              </tr>
+              <tr>
+                  <th scope ="row">bird</th>
+                  <td>Pyhmy Shrew</td>
+                  <td>blue whale</td>
+
+              </tr>
+              <tr> 
+                  <th scope ="row">mammal</th>
+                  <td>pygmy shrew</td>
+                  <td>blue whale</td>
+              </tr>
+        </table>
+
+        <p><strong>colspan attribute /rowspan attribute</strong> - A single table cell occupies a single row and column by default, but a cell may span multiple columns or multiple rows using colspan or rowspan attributes. to specify how many columns or rows to span.</p>
+
+        <table border="1">
+            <caption>Team schedule</caption>
+            <tr>
+                <th></th>
+                <td>Monday</td>
+                <td>Tuesday</td>
+                <td>Wednesday</td>
+
+            </tr>
+            <tr>
+                <th>9:00</th>
+                <td colspan="3">Warmup</td>
+
+            
+            </tr>
+            <tr>
+                <th>10:00</th>
+                <td>drills</td>
+                <td>skills test</td>
+                <td rowspan="2">scrimmage</td>
+            </tr>
+            <tr>
+                <th>11:00</th>
+                <td>film</td>
+                <td>weights</td>
+            </tr>
+        </table>
+
+        <p><strong>thead element:</strong> - &lt;thead&gt; element specifies the table header.</p>
+
+        <p><strong>tbody element:</strong> - &lt;tbody&gt; element specifies the table body.</p>
+        
+        <p><Strong>tfoot element:</Strong> - &lt;tfoot&gt; element specifies the table footer.</p>
     </body>
 </html>

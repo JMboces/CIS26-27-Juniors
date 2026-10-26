@@ -7,24 +7,90 @@
     <title>My First Website</title>
 </head>
 <body>
-    <header class="site-header">
-        <h1>website</h1>
-    
-</header>
-    <h1>Welcome to my first website!</h1>
-    <p>This is a paragraph of text</p>
-    <a href="basic.html">basic page</a> 
-    <br> <br>
-    <a href="about.html">about me</a>
-    <marquee behavior="scroll" direction="left" scrollamount="5">
-    <img
-      src="https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/698d12fa690f4c9ba6612bb1_104.png"
-      alt="Moving Image"
-      onmouseover="this.src='https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/671ff020439230b7ba0a7b80_95.png'"
-      onmouseout="this.src='https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/698d12fa690f4c9ba6612bb1_104.png'"
+<style>
+    body {
+      min-height: 100vh;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
 
-    -->
-</marquee>
+    table {
+      max-width: 100%;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    fieldset {
+      border: 1px solid white;
+    }
+
+    summary {
+      cursor: pointer;
+    }
+
+</style>
+
+    <table width="60%" align="center">
+        <tr>
+            <td>
+                <center>
+                    <header class="site-header">
+                    <h1>website</h1>
+        
+                    </header>
+                        <h1>Welcome to my first website!</h1>
+                        <p>This is a paragraph of text</p>
+                        <table border="2" width="50%">
+                            <tr>
+                                <td>
+                                  <center>
+                                    <a href="basic.html" style="color: cyan;">basic page</a> 
+                                    
+                                    <a href="about.html" style="color: cyan;">about me</a>
+                                  </center>
+                                </td>
+                            </tr>
+                        </table>
+
+                        </marquee>
+                        <table border="2" width="50%">
+                            <tr>
+                                <td>
+                                    <center>
+                                      <h2>Notes</h2>
+                                      <h3><a href="basic.html" style="color: cyan;">Basic</a> |
+                                      <a href="spChar.html" style="color: cyan;">Special Characters</a> |
+                                      <a href="tables.html" style="color: cyan;">Tables</a></h3>
+                                    </center>
+                                </td>
+                            </tr>
+                        </table>
+                                                          <br>
+                        <marquee behavior="scroll" direction="left" scrollamount="5">
+                        <img
+                        alt="Moving Image"
+                        onmouseover="this.src='https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/671ff020439230b7ba0a7b80_95.png'">
+                        </marquee>
+                </center>
+            </td>
+        </tr>
+    </table>
+    
 
 </body>
 </html>
+
+
+<a href="basic.html">Basic Page</a>
+
+<section>
+    <h2>About Me</h2>
+    <p>This is a paragraph about me.</p>
